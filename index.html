@@ -8,18 +8,26 @@
   <h1>Roblox Partの位置</h1>
   <p id="pos">読み込み中...</p>
 
-  <script>
-    async function update() {
-      const res = await fetch("https://yurisawa1.github.io/RBusiti");
-      const data = await res.json();
-      document.getElementById("pos").innerText =
-        `名前: ${data.name} | X: ${data.x.toFixed(2)} | Y: ${data.y.toFixed(2)} | Z: ${data.z.toFixed(2)}`;
-    }
+<script>
+async function update() {
+  try {
+    const res = await fetch("https://yurisawa1.github.io/RBusiti/index.json");
+    if (!res.ok) throw new Error("HTTPエラー");
+    const data = await res.json();
+    document.getElementById("pos").innerText =
+      `名前: ${data.name} | X: ${Number(data.x).toFixed(2)} | Y: ${Number(data.y).toFixed(2)} | Z: ${Number(data.z).toFixed(2)}`;
+  } catch (err) {
+    document.getElementById("pos").innerText = "取得エラー";
+    console.error(err);
+  }
+}
 
-    setInterval(update, 1000); // 1秒ごと更新
-  </script>
+setInterval(update, 1000);
+</script>
+
 </body>
 </html>
+
 
 
 

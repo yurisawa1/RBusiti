@@ -10,7 +10,7 @@
 
   <script>
     async function update() {
-      const res = await fetch(https://yurisawa1.github.io/RBusiti/);
+      const res = await fetch("https://yurisawa1.github.io/RBusiti/");
       const data = await res.json();
       document.getElementById("pos").innerText =
         `名前: ${data.name} | X: ${data.x.toFixed(2)} | Y: ${data.y.toFixed(2)} | Z: ${data.z.toFixed(2)}`;
@@ -20,4 +20,5 @@
   </script>
 </body>
 </html>
+
 
